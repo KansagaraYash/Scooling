@@ -18,13 +18,20 @@ class Student extends Model
         return $this->belongsTo(ClassRoom::class);
     }
 
+    // has one through relation between Student, ClassRoom and Department model.
     public function department()
     {
         return $this->hasOneThrough(Department::class, Classroom::class);
     }
 
-    public function classr()
+    // polymorphic relation between Student and Image model.
+    public function images()
     {
-        return $this->hasOne(ClassRoom::class,'classroom_id');
+        return $this->morphOne(Image::class, 'imageable')->oldestOfMany();
+    }
+   
+    public function subjects()
+    {
+        return $this->morphToMany(Subject::class, 'subjectable');
     }
 }

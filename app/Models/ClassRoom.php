@@ -35,4 +35,5 @@ class ClassRoom extends Model
         return $this->belongsToMany(Teacher::class, 'classroom_teacher','classroom_id','teacher_id');
     }
 
+   
 }

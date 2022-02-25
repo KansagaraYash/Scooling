@@ -28,4 +28,14 @@ class Teacher extends Model
     {
         return $this->belongsToMany(Classroom::class, 'classroom_teacher','teacher_id','classroom_id');
     }
+
+    public function images()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function subjects()
+    {
+        return $this->morphToMany(Subject::class, 'subjectable');
+    }
 }
